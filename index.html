@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Jyothika 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #14001f, #000);
+    color: white;
+    text-align: center;
+}
+
+/* Title */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    margin-top: 18%;
+    color: #ff99cc;
+    text-shadow: 0 0 20px #ff4da6, 0 0 40px #ff1a75;
+}
+
+/* Typing text */
+#typing {
+    font-size: 1.3rem;
+    color: #ffd6e8;
+    border-right: 2px solid #ff99cc;
+    display: inline-block;
+    padding-right: 5px;
+    margin-top: 10px;
+}
+
+/* Button */
+button {
+    margin-top: 25px;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(45deg, #ff4da6, #ff99cc);
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff4da6;
+}
+
+/* Dialog Box */
+.dialog {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 20px;
+    transition: 0.8s;
+    box-shadow: 0 0 25px rgba(255, 77, 166, 0.5);
+}
+
+.dialog.active {
+    bottom: 10%;
+}
+
+.dialog p {
+    font-size: 1.1rem;
+    color: #ffe6f2;
+    min-height: 60px;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: #ff4da6;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+/* Stars */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {opacity: 0.3;}
+    to {opacity: 1;}
+}
+
+/* Final button */
+#finalBtn {
+    display: none;
+    margin-top: 15px;
+    background: linear-gradient(45deg, #ff1a75, #ff66cc);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday Jyothika 💖</h1>
+<div id="typing"></div>
+
+<br>
+<button onclick="openHeart()">Open My Heart 💌</button>
+
+<div class="dialog" id="dialogBox">
+    <p id="loveText"></p>
+    <button id="finalBtn" onclick="finalResponse()">
+        Will you be with me forever? 💖
+    </button>
+</div>
+
+<script>
+/* Typing Animation */
+const message = "You are the most beautiful feeling in my life... 💕";
+let i = 0;
+
+function typeEffect() {
+    if (i < message.length) {
+        document.getElementById("typing").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeEffect, 50);
+    }
+}
+typeEffect();
+
+/* Romantic + Flirty Messages */
+const texts = [
+    "From the moment you came into my life... everything changed ✨",
+    "Your smile is my favorite place in the world 💖",
+    "You are not just special... you are my everything 🌸",
+    "On your birthday, I just want to say...",
+    "I’m really lucky to have you in my life 💫",
+
+    "But there's something I haven't told you yet... 👀",
+    "You have this magic... that makes my heart skip a beat every time 💓",
+    "And honestly...",
+    "I think I'm getting addicted to you 😌",
+
+    "How do you manage to look so cute ALL the time? 😏",
+    "It's kind of unfair... you're stealing all my attention 🙈",
+    "If being charming was a crime... you'd be guilty for life 💘",
+
+    "So today, on your birthday...",
+    "I just want to say one thing... 💌",
+    "Stay mine... a little more, every day 💖✨"
+];
+
+let j = 0;
+
+/* Open Dialog */
+function openHeart() {
+    document.getElementById("dialogBox").classList.add("active");
+    showTexts();
+    createHearts();
+}
+
+/* Show texts one by one */
+function showTexts() {
+    if (j < texts.length) {
+        document.getElementById("loveText").innerHTML = texts[j];
+        j++;
+        setTimeout(showTexts, 2500);
+    } else {
+        document.getElementById("finalBtn").style.display = "inline-block";
+    }
+}
+
+/* Final Deep Romantic Line */
+function finalResponse() {
+    document.getElementById("loveText").innerHTML =
+    "I don't need perfect moments... I just need you. Will you be with me forever? 💫💖";
+}
+
+/* Floating hearts */
+function createHearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+}
+
+/* Stars background */
+for (let i = 0; i < 80; i++) {
+    let star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(star);
+}
+</script>
+
+</body>
+  </html>
